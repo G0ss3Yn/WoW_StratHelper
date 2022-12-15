@@ -1,0 +1,7 @@
+## Interface: 100002
+## Title: StratHelper
+## Notes: Affichage de stratégies basiques
+## Author: G0ss3Yn
+## Version: 0.1
+
+main.lua
