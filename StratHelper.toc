@@ -4,4 +4,4 @@
 ## Author: G0ss3Yn
 ## Version: 0.0.1
 
-main.lua
+StratHelper.lua
