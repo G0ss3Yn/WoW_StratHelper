@@ -1,13 +1,34 @@
-SLASH_STRAT0 = "/strat"
-SLASH_STRAT1 = "/sh"
+SLASH_STRAT1 = "/strat";
 
-local function StratHandler(name)
-	local guid, name = UnitGUID("target"), UnitName("target");
-	if(guid) then
-		print(name .. " NPC ID : " .. tonumber(guid:sub(6,10), 16))
+local function PrintStrat(id, type)
+	if(type == "target") then
+		print("NPC ID : " .. id) ;
+	
+	elseif(type == "map") then
+		print("Zone ID : " .. id) ;
 	else
-		print("Pas de stratégie associée.")
+		print("Pas de stratégie associée.") ;
+		
+	end
+
+end
+
+local function StratHandler()
+	local guid, name, zoneID = UnitGUID("target"), UnitName("target"), C_Map.GetBestMapForUnit("player") ;
+	if( (guid) and (name) and (zoneID) ) then
+		
+		print("Debug GUID: " .. guid) ;
+		print("Debug Name: " .. name) ;
+		print("Debug Map : " .. zoneID) ;
+
+		local npcID = select(6, strsplit("-", guid)) ;
+
+		if(npcID) then
+			PrintStrat(npcID, "target") ;
+		else
+			PrintStrat(zoneID, "map") ;
+		end
 	end
 end
 
-SlashCmdList["STRAT"] = StratHandler;
+SlashCmdList["STRAT"] = StratHandler ;
