@@ -3,7 +3,7 @@ this.stratDB = {} ;
 
 this.stratDB["noid"] = {"Pas de stratégie associée", "Au boulot ! :)" } ;
 
-
+--[[ Print nameplates displayed --]]
 function this:UnitsAround()
 	local plate = 0
 	for idx = 1, 40, 1
@@ -16,7 +16,10 @@ function this:UnitsAround()
 	end
 end
 
+--[[ Print strategy if known --]]
 function this:PrintStrat(id, type)
+
+	--[[ Target type strategy --]]
 	if(type == "target") then
 		print("NPC ID : " .. id) ;
 		local msg = this.stratDB[id] ;
@@ -27,7 +30,7 @@ function this:PrintStrat(id, type)
 			print( msg[i] );
 		end
 		
-		
+	--[[ No target, try map type strategy --]]
 	elseif(type == "map") then
 		print("Zone ID : " .. id) ;
 		print("Zone name : "..C_Map.GetMapInfo(id).name)
