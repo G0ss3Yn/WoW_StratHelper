@@ -27,7 +27,7 @@ function this:PrintStrat(id, type)
 			msg = this.stratDB["noid"] ;
 		end
 		for i=1, #(msg) do
-			print( msg[i] );
+			print( "- " .. msg[i] );
 		end
 		
 	--[[ No target, try map type strategy --]]
